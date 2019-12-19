@@ -42,20 +42,20 @@ else
 fi
 
 # Wait for MySQL
-if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; then
-  i=0
-  while ! nc -z $MYSQL_HOST $MYSQL_PORT >/dev/null 2>&1 < /dev/null; do
-    i=$((i+1))
-    if [ "$1" = "webserver" ]; then
-      echo "$(date) - waiting for ${MYSQL_HOST}:${MYSQL_PORT}... $i/$TRY_LOOP"
-      if [ $i -ge $TRY_LOOP ]; then
-        echo "$(date) - ${MYSQL_HOST}:${MYSQL_PORT} still not reachable, giving up"
-        exit 1
-      fi
-    fi
-    sleep 10
-  done
-fi
+# if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; then
+#   i=0
+#   while ! nc -z $MYSQL_HOST $MYSQL_PORT >/dev/null 2>&1 < /dev/null; do
+#     i=$((i+1))
+#     if [ "$1" = "webserver" ]; then
+#       echo "$(date) - waiting for ${MYSQL_HOST}:${MYSQL_PORT}... $i/$TRY_LOOP"
+#       if [ $i -ge $TRY_LOOP ]; then
+#         echo "$(date) - ${MYSQL_HOST}:${MYSQL_PORT} still not reachable, giving up"
+#         exit 1
+#       fi
+#     fi
+#     sleep 10
+#   done
+# fi
 
 # Update configuration depending the type of Executor
 if [ "$EXECUTOR" = "Celery" ]
