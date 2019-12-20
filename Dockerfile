@@ -14,6 +14,7 @@ ENV TERM linux
 # Airflow
 ARG AIRFLOW_VERSION=1.8.2
 ARG AIRFLOW_HOME=/usr/local/airflow
+ENV AIRFLOW_HOME=/usr/local/airflow
 
 # Define en_US.
 ENV LANGUAGE en_US.UTF-8
