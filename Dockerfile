@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow
-ARG AIRFLOW_VERSION=1.8.2
+ARG AIRFLOW_VERSION=1.8.1
 ARG AIRFLOW_HOME=/usr/local/airflow
 ENV AIRFLOW_HOME=/usr/local/airflow
 
