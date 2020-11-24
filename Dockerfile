@@ -57,6 +57,7 @@ RUN set -ex \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
     && python -m pip install -U pip setuptools wheel \
     && pip install pip==9.0.1 \
+    && pip install werkzeug==0.15.2 \
     && pip install Cython \
     && pip install pytz \
     && pip install pyOpenSSL \
