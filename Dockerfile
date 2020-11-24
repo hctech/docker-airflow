@@ -16,6 +16,10 @@ ARG AIRFLOW_VERSION=1.8.1
 ARG AIRFLOW_HOME=/usr/local/airflow
 ENV AIRFLOW_HOME=/usr/local/airflow
 
+# JRE
+ENV JAVA_HOME /opt/jdk-11.0.7+10-jre
+ENV PATH $JAVA_HOME/bin:$PATH
+
 # Define en_US.
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -69,6 +73,11 @@ RUN set -ex \
         /usr/share/man \
         /usr/share/doc \
         /usr/share/doc-base
+
+# Install OpenJRE
+ADD https://devops-1251001046.cos.ap-guangzhou.myqcloud.com/OpenJDK11U-jre_x64_linux_hotspot_11.0.7_10.tar.gz /tmp
+RUN tar -zxf /tmp/OpenJDK11U-jre_x64_linux_hotspot_11.0.7_10.tar.gz -C /opt && \
+	rm -rf /tmp/OpenJDK11U-jre_x64_linux_hotspot_11.0.7_10.tar.gz
 
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
